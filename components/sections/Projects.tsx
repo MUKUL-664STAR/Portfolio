@@ -16,7 +16,7 @@ export default function ProjectsSection() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.05 });
 
   return (
-    <section id="projects" className="py-24 relative overflow-hidden" style={{ background: '#080e14' }}>
+    <section id="projects" className="py-24 relative overflow-hidden" style={{ background: 'var(--bg-base)' }}>
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[110px]" style={{ background: 'rgba(20,184,166,0.05)' }} />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-[90px]" style={{ background: 'rgba(16,185,129,0.04)' }} />
@@ -34,7 +34,7 @@ export default function ProjectsSection() {
                 initial={{ opacity:0, y:40 }} animate={inView?{opacity:1,y:0}:{}} transition={{ duration:0.6, delay: i*0.12 }}
                 whileHover={{ y:-6, scale:1.015 }}
                 className="card-shine flex flex-col rounded-2xl border overflow-hidden transition-all duration-300"
-                style={{ background:'#0d1520', borderColor:'rgba(255,255,255,0.07)' }}
+                style={{ background: 'var(--bg-card)', borderColor: 'var(--border)' }}
               >
                 {/* Top accent bar */}
                 <div className="h-0.5 w-full" style={{ background: `linear-gradient(to right, ${cfg.btnFrom}, ${cfg.btnTo})` }} />
@@ -47,19 +47,19 @@ export default function ProjectsSection() {
                     </div>
                     <div className="flex gap-2">
                       {proj.githubUrl && (
-                        <a href={proj.githubUrl} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200" style={{ color:'#6b7280', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)' }}>
+                        <a href={proj.githubUrl} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200" style={{ color:'#6b7280', background:'rgba(255,255,255,0.04)', border: '1px solid var(--border-card)' }}>
                           <Github className="w-4 h-4" />
                         </a>
                       )}
                       {proj.liveUrl && (
-                        <a href={proj.liveUrl} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200" style={{ color:'#6b7280', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)' }}>
+                        <a href={proj.liveUrl} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200" style={{ color:'#6b7280', background:'rgba(255,255,255,0.04)', border: '1px solid var(--border-card)' }}>
                           <ExternalLink className="w-4 h-4" />
                         </a>
                       )}
                     </div>
                   </div>
                   <h3 className="font-bold text-white text-base mb-1.5">{proj.title}</h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">{proj.description}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{proj.description}</p>
                 </div>
 
                 {/* Tech badges */}

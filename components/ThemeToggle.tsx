@@ -25,9 +25,8 @@ export default function ThemeToggle() {
   };
 
   // Render a same-size placeholder until client has read localStorage
-  // so server and client HTML agree on first render.
   if (!mounted) {
-    return <div className="w-8 h-8 rounded-xl bg-gray-100 dark:bg-gray-800" />;
+    return <div className="w-8 h-8 rounded-xl" style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }} />;
   }
 
   return (
@@ -36,7 +35,8 @@ export default function ThemeToggle() {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       aria-label="Toggle dark mode"
-      className="relative p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-yellow-400 transition-colors duration-200"
+      className="relative p-2 rounded-xl transition-colors duration-200"
+      style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', color: dark ? '#fbbf24' : '#6b7280' }}
     >
       <motion.span
         initial={false}

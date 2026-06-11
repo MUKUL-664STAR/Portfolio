@@ -19,7 +19,7 @@ export default function SkillsSection() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.08 });
 
   return (
-    <section id="skills" className="py-24 relative overflow-hidden" style={{ background: '#080e14' }}>
+    <section id="skills" className="py-24 relative overflow-hidden" style={{ background: 'var(--bg-base)' }}>
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(to right, transparent, rgba(16,185,129,0.3), transparent)' }} />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[120px]" style={{ background: 'rgba(16,185,129,0.04)' }} />
@@ -38,7 +38,7 @@ export default function SkillsSection() {
                 initial={{ opacity:0, y:30 }} animate={inView?{opacity:1,y:0}:{}} transition={{ duration:0.6, delay: ci*0.1 }}
                 whileHover={{ y:-4, scale:1.01 }}
                 className="card-shine relative p-5 rounded-2xl border transition-all duration-300 overflow-hidden"
-                style={{ background:'#0d1520', borderColor:'rgba(255,255,255,0.07)' }}
+                style={{ background: 'var(--bg-card)', borderColor: 'var(--border)' }}
               >
                 {/* Top accent line */}
                 <div className="absolute top-0 left-0 right-0 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: `linear-gradient(to right, ${cfg.barFrom}, ${cfg.barTo})` }} />
@@ -54,7 +54,7 @@ export default function SkillsSection() {
                   {cat.skills.map((sk) => (
                     <div key={sk.name}>
                       <div className="flex justify-between mb-1">
-                        <span className="text-xs text-gray-400">{sk.name}</span>
+                        <span className="text-xs text-gray-500 dark:text-gray-400">{sk.name}</span>
                         <span className="text-xs font-medium px-1.5 py-0.5 rounded-full" style={{ background: cfg.bg, color: cfg.accent }}>
                           {sk.level === 4 ? 'Expert' : sk.level === 3 ? 'Advanced' : 'Intermediate'}
                         </span>

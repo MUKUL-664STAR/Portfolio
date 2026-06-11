@@ -24,7 +24,7 @@ export default function HeroSection() {
     <section
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ background: '#080e14' }}
+      style={{ background: 'var(--bg-base)' }}
     >
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
@@ -74,7 +74,7 @@ export default function HeroSection() {
           <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-2 mb-7">
             {[
               { icon: Sparkles, label: `${profile.yearsOfExperience} Yrs Experience`, st: { borderColor:'rgba(16,185,129,0.3)', background:'rgba(16,185,129,0.07)', color:'#6ee7b7' } },
-              { icon: MapPin,   label: profile.location,                              st: { borderColor:'rgba(255,255,255,0.08)', background:'rgba(255,255,255,0.04)', color:'#9ca3af' } },
+              { icon: MapPin,   label: profile.location,                              st: { borderColor: 'var(--border-card)', background:'rgba(255,255,255,0.04)', color:'#9ca3af' } },
               { icon: Code2,   label: '@ Alyke (XVISION IT)',                        st: { borderColor:'rgba(20,184,166,0.3)', background:'rgba(20,184,166,0.07)', color:'#5eead4' } },
             ].map(({ icon: Icon, label, st }) => (
               <span key={label} className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-sm font-medium border backdrop-blur-sm" style={st}>
@@ -98,7 +98,7 @@ export default function HeroSection() {
             <motion.a href="/resume/Mukul_Choudhary_Resume.pdf" target="_blank" rel="noopener noreferrer" whileHover={{ scale:1.05, y:-2 }} whileTap={{ scale:0.96 }} className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl font-semibold text-base backdrop-blur-sm transition-all duration-300" style={{ color:'#6ee7b7', border:'1px solid rgba(16,185,129,0.35)', background:'rgba(16,185,129,0.07)' }}>
               <Eye className="w-4 h-4" />View Resume
             </motion.a>
-            <motion.button onClick={() => scrollToSection('#contact')} whileHover={{ scale:1.05, y:-2 }} whileTap={{ scale:0.96 }} className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl font-semibold text-base backdrop-blur-sm transition-all duration-300" style={{ color:'#d1d5db', border:'1px solid rgba(255,255,255,0.1)', background:'rgba(255,255,255,0.04)' }}>
+            <motion.button onClick={() => scrollToSection('#contact')} whileHover={{ scale:1.05, y:-2 }} whileTap={{ scale:0.96 }} className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl font-semibold text-base backdrop-blur-sm transition-all duration-300" style={{ color:'#d1d5db', border: '1px solid var(--border-card)', background:'rgba(255,255,255,0.04)' }}>
               <Mail className="w-4 h-4" />Contact Me
             </motion.button>
           </motion.div>
@@ -110,7 +110,7 @@ export default function HeroSection() {
               { href: profile.linkedin,          icon: Linkedin, label: 'LinkedIn' },
               { href: `mailto:${profile.email}`, icon: Mail,     label: 'Email' },
             ].map(({ href, icon: Icon, label }) => (
-              <motion.a key={label} href={href} target="_blank" rel="noopener noreferrer" whileHover={{ scale:1.12, y:-3 }} whileTap={{ scale:0.92 }} aria-label={label} className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300" style={{ color:'#6b7280', border:'1px solid rgba(255,255,255,0.09)', background:'rgba(255,255,255,0.04)' }}>
+              <motion.a key={label} href={href} target="_blank" rel="noopener noreferrer" whileHover={{ scale:1.12, y:-3 }} whileTap={{ scale:0.92 }} aria-label={label} className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300" style={{ color:'#6b7280', border: '1px solid var(--border-card)', background:'rgba(255,255,255,0.04)' }}>
                 <Icon className="w-5 h-5" />
               </motion.a>
             ))}

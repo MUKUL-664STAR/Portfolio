@@ -21,7 +21,7 @@ export default function ResumeSection() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
-    <section id="resume" className="py-24 relative overflow-hidden" style={{ background:'#0a1118' }}>
+    <section id="resume" className="py-24 relative overflow-hidden" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle title="Resume" subtitle="View online or download a PDF copy of my resume." />
 

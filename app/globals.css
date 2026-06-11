@@ -2,16 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Design tokens ─────────────────────────────────────────── */
+/* ─── Design tokens — Light mode defaults ────────────────────── */
 :root {
-  --font-inter: 'Inter', sans-serif;
-  --accent:        #10b981;   /* emerald-500  */
-  --accent-2:      #14b8a6;   /* teal-500     */
-  --accent-3:      #f59e0b;   /* amber-500    */
+  --font-inter:    'Inter', sans-serif;
+  --accent:        #10b981;
+  --accent-2:      #14b8a6;
+  --accent-3:      #f59e0b;
+
+  /* Backgrounds */
+  --bg-base:       #f8fafc;
+  --bg-surface:    #f1f5f9;
+  --bg-card:       #ffffff;
+  --nav-bg:        rgba(248,250,252,0.88);
+
+  /* Borders */
+  --border:        rgba(0,0,0,0.08);
+  --border-card:   rgba(0,0,0,0.1);
+  --border-subtle: rgba(0,0,0,0.05);
+
+  /* Text */
+  --color-1:       #0f172a;   /* headings  */
+  --color-2:       #475569;   /* body      */
+  --color-3:       #94a3b8;   /* muted     */
+
+  /* Glows (toned down in light) */
+  --glow-em:  0 0 30px rgba(16,185,129,0.12);
+  --glow-tl:  0 0 30px rgba(20,184,166,0.1);
+  --glow-amb: 0 0 30px rgba(245,158,11,0.12);
+}
+
+/* ─── Dark mode overrides ────────────────────────────────────── */
+.dark {
   --bg-base:       #080e14;
+  --bg-surface:    #0a1118;
   --bg-card:       #0d1520;
-  --bg-card-2:     #111a27;
+  --nav-bg:        rgba(8,14,20,0.88);
+
   --border:        rgba(255,255,255,0.07);
+  --border-card:   rgba(255,255,255,0.09);
+  --border-subtle: rgba(255,255,255,0.04);
+
+  --color-1:       #f1f5f9;
+  --color-2:       #94a3b8;
+  --color-3:       #475569;
+
   --glow-em:  0 0 40px rgba(16,185,129,0.18);
   --glow-tl:  0 0 40px rgba(20,184,166,0.15);
   --glow-amb: 0 0 40px rgba(245,158,11,0.18);
@@ -27,6 +61,7 @@ html {
 body {
   font-family: var(--font-inter);
   background: var(--bg-base);
+  color: var(--color-1);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -66,16 +101,19 @@ body {
 
 /* ─── Dot grid overlay ───────────────────────────────────────── */
 .dot-grid {
-  background-image: radial-gradient(rgba(16,185,129,0.12) 1px, transparent 1px);
+  background-image: radial-gradient(var(--border-card) 1px, transparent 1px);
   background-size: 30px 30px;
 }
 
 /* ─── Glass ─────────────────────────────────────────────────── */
 .glass {
-  background: rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.06);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border);
+}
+.dark .glass {
+  background: rgba(255,255,255,0.04);
 }
 
 /* ─── Gradient border trick ──────────────────────────────────── */

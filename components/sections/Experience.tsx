@@ -14,7 +14,7 @@ export default function ExperienceSection() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.08 });
 
   return (
-    <section id="experience" className="py-24 relative overflow-hidden" style={{ background: '#0a1118' }}>
+    <section id="experience" className="py-24 relative overflow-hidden" style={{ background: 'var(--bg-surface)' }}>
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[400px] h-[400px] rounded-full blur-[100px]" style={{ background: 'rgba(16,185,129,0.04)' }} />
         <div className="absolute bottom-0 right-1/4 w-[350px] h-[350px] rounded-full blur-[90px]" style={{ background: 'rgba(20,184,166,0.04)' }} />
@@ -43,11 +43,11 @@ export default function ExperienceSection() {
                 <motion.div
                   whileHover={{ x:4, scale:1.01 }}
                   className="card-shine p-5 rounded-2xl border transition-all duration-300 border-l-2"
-                  style={{ background:'#0d1520', borderColor:'rgba(255,255,255,0.07)', borderLeftColor: accentColors[i%4] }}
+                  style={{ background: 'var(--bg-card)', borderColor: 'var(--border)', borderLeftColor: accentColors[i%4] }}
                 >
                   <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
                     <div>
-                      <h3 className="font-bold text-white text-base">{exp.role}</h3>
+                      <h3 className="font-bold text-gray-900 dark:text-white text-base">{exp.role}</h3>
                       <div className="flex items-center gap-1.5 mt-0.5">
                         <Building2 className="w-3.5 h-3.5" style={{ color: accentColors[i%4] }} />
                         <span className="text-sm font-medium" style={{ color: accentColors[i%4] }}>{exp.company}</span>

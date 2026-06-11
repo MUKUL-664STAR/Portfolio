@@ -23,7 +23,7 @@ export default function AboutSection() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.08 });
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden" style={{ background: '#0a1118' }}>
+    <section id="about" className="py-24 relative overflow-hidden" style={{ background: 'var(--bg-surface)' }}>
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute bottom-0 right-0 w-[500px] h-[400px] rounded-full blur-[100px]" style={{ background: 'rgba(20,184,166,0.05)' }} />
         <div className="absolute top-0 left-0 w-[400px] h-[300px] rounded-full blur-[80px]" style={{ background: 'rgba(16,185,129,0.04)' }} />
@@ -55,10 +55,10 @@ export default function AboutSection() {
                 { icon: MapPin,        val: 'Noida',   label: 'India',        c:'#fbbf24' },
                 { icon: Calendar,      val: 'Feb 2025',label: 'Current Role', c:'#a78bfa' },
               ].map(({ icon: Icon, val, label, c }) => (
-                <div key={label} className="flex flex-col items-center p-4 rounded-2xl border" style={{ background:'#0d1520', borderColor:'rgba(255,255,255,0.07)' }}>
+                <div key={label} className="flex flex-col items-center p-4 rounded-2xl border" style={{ background: 'var(--bg-card)', borderColor: 'var(--border)' }}>
                   <Icon className="w-5 h-5 mb-1.5" style={{ color: c }} />
                   <span className="text-lg font-bold text-white">{val}</span>
-                  <span className="text-xs text-gray-500">{label}</span>
+                  <span className="text-xs text-gray-500 dark:text-gray-500">{label}</span>
                 </div>
               ))}
             </div>
@@ -83,7 +83,7 @@ export default function AboutSection() {
               {highlights.map(({ icon: Icon, title, desc, color, bg, border }) => (
                 <motion.div key={title} whileHover={{ y:-3, scale:1.02 }} className="p-4 rounded-2xl border transition-all duration-200" style={{ background: bg, borderColor: border }}>
                   <Icon className="w-5 h-5 mb-2" style={{ color }} />
-                  <div className="text-sm font-semibold text-white mb-1">{title}</div>
+                  <div className="text-sm font-semibold text-gray-900 dark:text-white mb-1">{title}</div>
                   <div className="text-xs text-gray-500 leading-relaxed">{desc}</div>
                 </motion.div>
               ))}

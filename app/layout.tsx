@@ -49,7 +49,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} bg-white dark:bg-gray-950 text-gray-900 dark:text-white antialiased`}>
+      <body className={`${inter.className} antialiased`} style={{ background: 'var(--bg-base)', color: 'var(--color-1)' }}>
         <LoadingScreen />
         <ScrollProgress />
         <Navbar />
