@@ -23,53 +23,26 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#030712]"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{ background: '#080e14' }}
     >
-      {/* ── Background layers ── */}
+      {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Dot grid */}
-        <div className="absolute inset-0 dot-grid opacity-60" />
-
-        {/* Radial vignette */}
-        <div className="absolute inset-0 bg-radial-gradient" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99,102,241,0.08) 0%, transparent 70%)' }} />
-
-        {/* Animated color blobs */}
-        <motion.div
-          animate={{ x: [0, 70, 0], y: [0, -50, 0], scale: [1, 1.15, 1] }}
-          transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute -top-48 -right-48 w-[700px] h-[700px] rounded-full bg-blue-600/[0.07] blur-[100px]"
-        />
-        <motion.div
-          animate={{ x: [0, -60, 0], y: [0, 60, 0], scale: [1, 1.2, 1] }}
-          transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
-          className="absolute -bottom-48 -left-48 w-[600px] h-[600px] rounded-full bg-violet-600/[0.07] blur-[100px]"
-        />
-        <motion.div
-          animate={{ x: [0, 40, 0], y: [0, -40, 0], scale: [1, 1.1, 1] }}
-          transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut', delay: 8 }}
-          className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-cyan-500/[0.05] blur-[80px]"
-        />
-        <motion.div
-          animate={{ x: [0, -30, 0], y: [0, 30, 0] }}
-          transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-          className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] rounded-full bg-indigo-500/[0.06] blur-[60px]"
-        />
-
-        {/* Top glow line */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-indigo-500/50 to-transparent" />
+        <div className="absolute inset-0 dot-grid opacity-50" />
+        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 80% 55% at 50% 0%, rgba(16,185,129,0.07) 0%, transparent 70%)' }} />
+        <motion.div animate={{ x: [0,60,0], y: [0,-45,0], scale: [1,1.15,1] }} transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }} className="absolute -top-48 -right-48 w-[650px] h-[650px] rounded-full blur-[110px]" style={{ background: 'rgba(16,185,129,0.07)' }} />
+        <motion.div animate={{ x: [0,-55,0], y: [0,55,0], scale: [1,1.2,1] }} transition={{ duration: 26, repeat: Infinity, ease: 'easeInOut', delay: 5 }} className="absolute -bottom-48 -left-48 w-[600px] h-[600px] rounded-full blur-[100px]" style={{ background: 'rgba(20,184,166,0.07)' }} />
+        <motion.div animate={{ x: [0,35,0], y: [0,-35,0] }} transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut', delay: 9 }} className="absolute top-1/3 left-1/4 w-[450px] h-[450px] rounded-full blur-[90px]" style={{ background: 'rgba(245,158,11,0.04)' }} />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-28" style={{ background: 'linear-gradient(to bottom, rgba(16,185,129,0.55), transparent)' }} />
       </div>
 
-      {/* ── Content ── */}
+      {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 w-full">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col items-center text-center"
-        >
+        <motion.div variants={containerVariants} initial="hidden" animate="visible" className="flex flex-col items-center text-center">
+
           {/* Status pill */}
           <motion.div variants={itemVariants} className="mb-8">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold border border-emerald-500/25 bg-emerald-500/8 text-emerald-400 shadow-lg shadow-emerald-500/10 backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold border backdrop-blur-sm" style={{ borderColor: 'rgba(16,185,129,0.3)', background: 'rgba(16,185,129,0.08)', color: '#34d399' }}>
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
@@ -78,135 +51,80 @@ export default function HeroSection() {
             </span>
           </motion.div>
 
-          {/* Greeting + Name */}
+          {/* Name */}
           <motion.div variants={itemVariants} className="mb-5">
-            <p className="text-base sm:text-lg font-medium text-gray-500 tracking-widest uppercase mb-3">
-              Hello, world! I&apos;m
-            </p>
+            <p className="text-base sm:text-lg font-medium text-gray-500 tracking-widest uppercase mb-3">Hello, world! I&apos;m</p>
             <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[96px] font-black leading-none tracking-tight">
-              <span className="text-gradient-blue">Mukul</span>
+              <span className="text-gradient">Mukul</span>
               <br />
               <span className="text-white/90">Choudhary</span>
             </h1>
           </motion.div>
 
           {/* Typing role */}
-          <motion.div
-            variants={itemVariants}
-            className="flex items-center gap-3 mb-7"
-          >
-            <div className="h-px w-8 bg-gradient-to-r from-transparent to-indigo-500" />
-            <div className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-300 min-h-[40px] flex items-center">
-              <TypeAnimation
-                sequence={typingSequence}
-                wrapper="span"
-                cursor={true}
-                repeat={Infinity}
-                className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400"
-              />
+          <motion.div variants={itemVariants} className="flex items-center gap-3 mb-7">
+            <div className="h-px w-8" style={{ background: 'linear-gradient(to right, transparent, #10b981)' }} />
+            <div className="text-xl sm:text-2xl md:text-3xl font-semibold min-h-[40px] flex items-center">
+              <TypeAnimation sequence={typingSequence} wrapper="span" cursor={true} repeat={Infinity} style={{ background: 'linear-gradient(to right, #34d399, #2dd4bf)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }} />
             </div>
-            <div className="h-px w-8 bg-gradient-to-l from-transparent to-cyan-500" />
+            <div className="h-px w-8" style={{ background: 'linear-gradient(to left, transparent, #14b8a6)' }} />
           </motion.div>
 
           {/* Meta badges */}
           <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-2 mb-7">
             {[
-              { icon: Sparkles, label: `${profile.yearsOfExperience} Yrs Experience`, color: 'border-indigo-500/30 bg-indigo-500/8 text-indigo-300' },
-              { icon: MapPin,    label: profile.location,                              color: 'border-gray-700 bg-gray-800/60 text-gray-400' },
-              { icon: Code2,    label: '@ Alyke (XVISION IT)',                        color: 'border-blue-500/30 bg-blue-500/8 text-blue-300' },
-            ].map(({ icon: Icon, label, color }) => (
-              <span key={label} className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-sm font-medium border backdrop-blur-sm ${color}`}>
-                <Icon className="w-3.5 h-3.5" />
-                {label}
+              { icon: Sparkles, label: `${profile.yearsOfExperience} Yrs Experience`, st: { borderColor:'rgba(16,185,129,0.3)', background:'rgba(16,185,129,0.07)', color:'#6ee7b7' } },
+              { icon: MapPin,   label: profile.location,                              st: { borderColor:'rgba(255,255,255,0.08)', background:'rgba(255,255,255,0.04)', color:'#9ca3af' } },
+              { icon: Code2,   label: '@ Alyke (XVISION IT)',                        st: { borderColor:'rgba(20,184,166,0.3)', background:'rgba(20,184,166,0.07)', color:'#5eead4' } },
+            ].map(({ icon: Icon, label, st }) => (
+              <span key={label} className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-sm font-medium border backdrop-blur-sm" style={st}>
+                <Icon className="w-3.5 h-3.5" />{label}
               </span>
             ))}
           </motion.div>
 
           {/* Bio */}
-          <motion.p
-            variants={itemVariants}
-            className="text-base sm:text-lg text-gray-400 max-w-2xl leading-relaxed mb-10 text-balance"
-          >
-            Backend Engineer with <span className="text-white font-medium">2.9 years</span> building scalable, high-performance systems.
-            Skilled in <span className="text-blue-400 font-medium">Node.js</span>,{' '}
-            <span className="text-cyan-400 font-medium">TypeScript</span>, real-time messaging, and cloud integrations.
+          <motion.p variants={itemVariants} className="text-base sm:text-lg text-gray-400 max-w-2xl leading-relaxed mb-10 text-balance">
+            Backend Engineer with <span className="text-white font-medium">2.9 years</span> building scalable, high-performance systems. Skilled in{' '}
+            <span className="font-medium" style={{ color:'#34d399' }}>Node.js</span>,{' '}
+            <span className="font-medium" style={{ color:'#2dd4bf' }}>TypeScript</span>, real-time messaging, and cloud integrations.
           </motion.p>
 
           {/* CTA Buttons */}
           <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-3 mb-10">
-            <motion.a
-              href="/resume/Mukul_Choudhary_Resume.pdf"
-              download="Mukul_Choudhary_Resume.pdf"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.96 }}
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl font-semibold text-base text-white bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 shadow-xl shadow-blue-600/30 hover:shadow-blue-500/50 transition-shadow duration-300"
-            >
-              <Download className="w-4 h-4" />
-              Download Resume
+            <motion.a href="/resume/Mukul_Choudhary_Resume.pdf" download="Mukul_Choudhary_Resume.pdf" whileHover={{ scale:1.05, y:-2 }} whileTap={{ scale:0.96 }} className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl font-semibold text-base text-white" style={{ background:'linear-gradient(135deg,#059669,#0d9488)', boxShadow:'0 8px 32px rgba(16,185,129,0.28)' }}>
+              <Download className="w-4 h-4" />Download Resume
             </motion.a>
-
-            <motion.a
-              href="/resume/Mukul_Choudhary_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.96 }}
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl font-semibold text-base text-indigo-300 border border-indigo-500/40 bg-indigo-500/8 hover:bg-indigo-500/15 hover:border-indigo-400/60 backdrop-blur-sm transition-all duration-300"
-            >
-              <Eye className="w-4 h-4" />
-              View Resume
+            <motion.a href="/resume/Mukul_Choudhary_Resume.pdf" target="_blank" rel="noopener noreferrer" whileHover={{ scale:1.05, y:-2 }} whileTap={{ scale:0.96 }} className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl font-semibold text-base backdrop-blur-sm transition-all duration-300" style={{ color:'#6ee7b7', border:'1px solid rgba(16,185,129,0.35)', background:'rgba(16,185,129,0.07)' }}>
+              <Eye className="w-4 h-4" />View Resume
             </motion.a>
-
-            <motion.button
-              onClick={() => scrollToSection('#contact')}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.96 }}
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl font-semibold text-base text-gray-300 border border-gray-700/80 bg-gray-800/60 hover:bg-gray-700/80 hover:border-gray-600 backdrop-blur-sm transition-all duration-300"
-            >
-              <Mail className="w-4 h-4" />
-              Contact Me
+            <motion.button onClick={() => scrollToSection('#contact')} whileHover={{ scale:1.05, y:-2 }} whileTap={{ scale:0.96 }} className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl font-semibold text-base backdrop-blur-sm transition-all duration-300" style={{ color:'#d1d5db', border:'1px solid rgba(255,255,255,0.1)', background:'rgba(255,255,255,0.04)' }}>
+              <Mail className="w-4 h-4" />Contact Me
             </motion.button>
           </motion.div>
 
-          {/* Social icons */}
+          {/* Socials */}
           <motion.div variants={itemVariants} className="flex items-center gap-3 mb-20">
             {[
-              { href: profile.github, icon: Github, label: 'GitHub', hoverClass: 'hover:text-white hover:border-gray-500 hover:bg-gray-700' },
-              { href: profile.linkedin, icon: Linkedin, label: 'LinkedIn', hoverClass: 'hover:text-blue-400 hover:border-blue-500/50 hover:bg-blue-500/10' },
-              { href: `mailto:${profile.email}`, icon: Mail, label: 'Email', hoverClass: 'hover:text-cyan-400 hover:border-cyan-500/50 hover:bg-cyan-500/10' },
-            ].map(({ href, icon: Icon, label, hoverClass }) => (
-              <motion.a
-                key={label}
-                href={href}
-                target={href.startsWith('http') ? '_blank' : undefined}
-                rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.9 }}
-                className={`p-3 rounded-xl border border-gray-700/80 bg-gray-800/50 text-gray-500 backdrop-blur-sm transition-all duration-200 ${hoverClass}`}
-                aria-label={label}
-              >
+              { href: profile.github,           icon: Github,   label: 'GitHub' },
+              { href: profile.linkedin,          icon: Linkedin, label: 'LinkedIn' },
+              { href: `mailto:${profile.email}`, icon: Mail,     label: 'Email' },
+            ].map(({ href, icon: Icon, label }) => (
+              <motion.a key={label} href={href} target="_blank" rel="noopener noreferrer" whileHover={{ scale:1.12, y:-3 }} whileTap={{ scale:0.92 }} aria-label={label} className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300" style={{ color:'#6b7280', border:'1px solid rgba(255,255,255,0.09)', background:'rgba(255,255,255,0.04)' }}>
                 <Icon className="w-5 h-5" />
               </motion.a>
             ))}
           </motion.div>
 
           {/* Scroll cue */}
-          <motion.button
-            variants={itemVariants}
-            onClick={() => scrollToSection('#about')}
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="flex flex-col items-center gap-1.5 text-gray-600 hover:text-gray-400 transition-colors"
-            aria-label="Scroll down"
-          >
-            <span className="text-[10px] font-semibold tracking-[0.2em] uppercase">Scroll</span>
+          <motion.button variants={itemVariants} onClick={() => scrollToSection('#about')} animate={{ y:[0,6,0] }} transition={{ duration:2, repeat:Infinity }} className="flex flex-col items-center gap-1 text-gray-600 hover:text-emerald-400 transition-colors">
+            <span className="text-xs tracking-widest uppercase">Scroll</span>
             <ArrowDown className="w-4 h-4" />
           </motion.button>
         </motion.div>
       </div>
 
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-950 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none" style={{ background: 'linear-gradient(to top, #080e14, transparent)' }} />
     </section>
   );
 }

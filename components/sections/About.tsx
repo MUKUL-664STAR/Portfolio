@@ -7,144 +7,99 @@ import SectionTitle from '@/components/ui/SectionTitle';
 import { profile } from '@/data/profile';
 
 const techStack = [
-  'Node.js', 'Express.js', 'JavaScript', 'TypeScript', 'React', 'Three.js',
-  'PostgreSQL', 'MongoDB', 'Firestore', 'AWS', 'Firebase', 'Elasticsearch',
-  'Redash', 'Razorpay', 'Adapty', 'JWT / OTP', 'REST APIs', 'Swagger',
+  'Node.js', 'Express.js', 'JavaScript', 'TypeScript', 'React',
+  'PostgreSQL', 'MongoDB', 'Firestore', 'AWS', 'Firebase',
+  'Elasticsearch', 'Razorpay', 'JWT / OTP', 'REST APIs', 'Swagger',
 ];
 
 const highlights = [
-  { icon: Code2, title: 'Backend Engineering',      desc: 'Scalable APIs and microservices with Node.js & TypeScript.',          color: 'text-blue-400',    bg: 'bg-blue-500/10 border-blue-500/20' },
-  { icon: Zap,   title: 'Performance Optimization', desc: 'Query optimization, caching, and efficient code refactoring.',         color: 'text-cyan-400',    bg: 'bg-cyan-500/10 border-cyan-500/20' },
-  { icon: Globe, title: 'API Architecture',          desc: 'RESTful APIs, auth systems, and robust third-party integrations.',     color: 'text-violet-400',  bg: 'bg-violet-500/10 border-violet-500/20' },
-  { icon: Cpu,   title: 'AI Integrations',           desc: 'Connecting LLM APIs and AI features into production services.',        color: 'text-emerald-400', bg: 'bg-emerald-500/10 border-emerald-500/20' },
+  { icon: Code2, title: 'Backend Engineering',      desc: 'Scalable APIs & microservices with Node.js & TypeScript.',        color: '#34d399', bg: 'rgba(16,185,129,0.08)',  border: 'rgba(16,185,129,0.2)' },
+  { icon: Zap,   title: 'Performance Optimization', desc: 'Query tuning, caching, and efficient refactoring.',               color: '#2dd4bf', bg: 'rgba(20,184,166,0.08)', border: 'rgba(20,184,166,0.2)' },
+  { icon: Globe, title: 'API Architecture',          desc: 'RESTful APIs, auth systems, and third-party integrations.',       color: '#fbbf24', bg: 'rgba(245,158,11,0.08)', border: 'rgba(245,158,11,0.2)' },
+  { icon: Cpu,   title: 'AI Integrations',           desc: 'Connecting LLM APIs and AI features into production services.',   color: '#a78bfa', bg: 'rgba(139,92,246,0.08)', border: 'rgba(139,92,246,0.2)' },
 ];
 
 export default function AboutSection() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.08 });
 
   return (
-    <section id="about" className="py-24 bg-gray-950 relative overflow-hidden">
-      {/* background accent */}
+    <section id="about" className="py-24 relative overflow-hidden" style={{ background: '#0a1118' }}>
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 right-0 w-[500px] h-[400px] rounded-full bg-violet-600/[0.04] blur-[100px]" />
-        <div className="absolute top-0 left-0 w-[400px] h-[300px] rounded-full bg-blue-600/[0.04] blur-[80px]" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[400px] rounded-full blur-[100px]" style={{ background: 'rgba(20,184,166,0.05)' }} />
+        <div className="absolute top-0 left-0 w-[400px] h-[300px] rounded-full blur-[80px]" style={{ background: 'rgba(16,185,129,0.04)' }} />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle title="About Me" subtitle="A little about who I am and what I bring to the table." />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionTitle title="About Me" subtitle="A little background on who I am and what drives me." />
 
-        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* ── Left: Avatar + Stats ── */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="flex flex-col items-center lg:items-start gap-7"
-          >
-            {/* Avatar with rotating ring */}
+        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start mt-4">
+
+          {/* LEFT — avatar + stats */}
+          <motion.div initial={{ opacity:0, x:-40 }} animate={inView?{opacity:1,x:0}:{}} transition={{ duration:0.7 }} className="flex flex-col items-center gap-6">
+            {/* Avatar ring */}
             <div className="relative">
-              <div className="w-44 h-44 rounded-3xl bg-gradient-to-br from-indigo-600 via-blue-600 to-cyan-500 flex items-center justify-center text-white text-5xl font-black shadow-2xl shadow-blue-600/40">
-                {profile.avatarInitials}
+              <div className="w-44 h-44 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #059669, #0d9488)', boxShadow: '0 0 60px rgba(16,185,129,0.25)' }}>
+                <span className="text-5xl font-black text-white">MC</span>
               </div>
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-                className="absolute -inset-3 rounded-3xl border border-dashed border-indigo-500/30"
-              />
-              <div className="absolute -bottom-3 -right-3 px-3 py-1.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-xs font-bold shadow-lg shadow-emerald-500/40">
+              <div className="absolute inset-0 rounded-full border-2 border-dashed animate-spin" style={{ borderColor: 'rgba(16,185,129,0.3)', animationDuration: '18s' }} />
+              <div className="absolute -bottom-1 -right-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: 'rgba(16,185,129,0.15)', border: '1px solid rgba(16,185,129,0.4)', color: '#34d399' }}>
                 Available
               </div>
             </div>
 
-            {/* Quick stats grid */}
+            {/* Quick stats */}
             <div className="grid grid-cols-2 gap-3 w-full max-w-xs">
               {[
-                { icon: Briefcase,      label: 'Experience',  value: profile.yearsOfExperience + ' Yrs', accent: 'text-blue-400' },
-                { icon: MapPin,         label: 'Location',    value: 'Noida, IN',                       accent: 'text-cyan-400' },
-                { icon: GraduationCap,  label: 'Education',   value: 'B.Tech CSE',                      accent: 'text-violet-400' },
-                { icon: Calendar,       label: 'Status',      value: 'Open to Work',                    accent: 'text-emerald-400' },
-              ].map(({ icon: Icon, label, value, accent }) => (
-                <div key={label} className="flex flex-col gap-1 p-4 rounded-2xl bg-gray-900 border border-gray-800 hover:border-gray-700 transition-colors">
-                  <Icon className={`w-4 h-4 ${accent} mb-1`} />
+                { icon: Briefcase,     val: '2.9+',    label: 'Years Exp.',   c:'#34d399' },
+                { icon: GraduationCap, val: 'B.Tech',  label: 'CS — 2022',    c:'#2dd4bf' },
+                { icon: MapPin,        val: 'Noida',   label: 'India',        c:'#fbbf24' },
+                { icon: Calendar,      val: 'Feb 2025',label: 'Current Role', c:'#a78bfa' },
+              ].map(({ icon: Icon, val, label, c }) => (
+                <div key={label} className="flex flex-col items-center p-4 rounded-2xl border" style={{ background:'#0d1520', borderColor:'rgba(255,255,255,0.07)' }}>
+                  <Icon className="w-5 h-5 mb-1.5" style={{ color: c }} />
+                  <span className="text-lg font-bold text-white">{val}</span>
                   <span className="text-xs text-gray-500">{label}</span>
-                  <span className="text-sm font-semibold text-white">{value}</span>
                 </div>
               ))}
             </div>
           </motion.div>
 
-          {/* ── Right: Bio + Highlights + Stack ── */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="space-y-6"
-          >
-            {/* Bio */}
-            <div className="space-y-4 text-gray-400 leading-relaxed text-[15px]">
-              <p className="text-lg text-gray-300">
-                I&apos;m a <span className="text-indigo-400 font-semibold">Backend Engineer</span> with{' '}
-                <span className="text-white font-semibold">2.9 years of experience</span> designing, building, and
-                optimizing scalable applications using{' '}
-                <span className="text-blue-400 font-medium">Node.js</span>,{' '}
-                <span className="text-blue-400 font-medium">Express.js</span>, and{' '}
-                <span className="text-cyan-400 font-medium">TypeScript</span>.
+          {/* RIGHT — bio + highlights */}
+          <motion.div initial={{ opacity:0, x:40 }} animate={inView?{opacity:1,x:0}:{}} transition={{ duration:0.7, delay:0.15 }} className="flex flex-col gap-6">
+            <div className="space-y-4 text-gray-400 text-base leading-relaxed">
+              <p>
+                I&apos;m a <span className="font-semibold" style={{ color:'#34d399' }}>Backend Engineer</span> with {profile.yearsOfExperience} years of experience designing and shipping production-grade APIs and distributed systems.
               </p>
               <p>
-                Skilled in REST API development, real-time messaging, payment integration (
-                <span className="text-purple-400 font-medium">Razorpay</span>), product analytics (
-                <span className="text-purple-400 font-medium">Adapty</span>,{' '}
-                <span className="text-purple-400 font-medium">Meta</span>), and cloud services (
-                <span className="text-cyan-400 font-medium">AWS</span>,{' '}
-                <span className="text-cyan-400 font-medium">Firebase</span>,{' '}
-                <span className="text-cyan-400 font-medium">Elasticsearch</span>).
+                Currently at <span className="font-semibold text-white">XVISION IT / Alyke</span>, I build real-time features, notification pipelines, OTA update systems, and AI-integrated services — all focused on reliability and developer experience.
               </p>
               <p>
-                Currently building backend systems at{' '}
-                <span className="text-blue-400 font-semibold">Alyke (XVISION IT)</span> — the world&apos;s
-                first friendship app — with a strong focus on performance, scalability, and clean,
-                maintainable code.
+                I hold a <span className="font-semibold" style={{ color:'#2dd4bf' }}>B.Tech in Computer Science</span> and thrive in environments that demand clean architecture, thoughtful API design, and fast iteration.
               </p>
-              <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500/8 border border-amber-500/20 text-amber-400 text-sm font-medium">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" />
-                </span>
-                Currently looking for a job switch.
-              </div>
             </div>
 
             {/* Highlight cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {highlights.map(({ icon: Icon, title, desc, color, bg }) => (
-                <div key={title} className={`p-4 rounded-2xl bg-gray-900 border ${bg} hover:brightness-110 transition-all duration-300`}>
-                  <div className={`inline-flex p-2 rounded-xl mb-2 ${bg}`}>
-                    <Icon className={`w-4 h-4 ${color}`} />
-                  </div>
-                  <h4 className="text-sm font-semibold text-white mb-1">{title}</h4>
-                  <p className="text-xs text-gray-500 leading-relaxed">{desc}</p>
-                </div>
+              {highlights.map(({ icon: Icon, title, desc, color, bg, border }) => (
+                <motion.div key={title} whileHover={{ y:-3, scale:1.02 }} className="p-4 rounded-2xl border transition-all duration-200" style={{ background: bg, borderColor: border }}>
+                  <Icon className="w-5 h-5 mb-2" style={{ color }} />
+                  <div className="text-sm font-semibold text-white mb-1">{title}</div>
+                  <div className="text-xs text-gray-500 leading-relaxed">{desc}</div>
+                </motion.div>
               ))}
             </div>
 
             {/* Tech tags */}
-            <div>
-              <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-3">Tech I Work With</h4>
-              <div className="flex flex-wrap gap-2">
-                {techStack.map((tech, i) => {
-                  const colours = [
-                    'hover:text-blue-400 hover:border-blue-500/50',
-                    'hover:text-cyan-400 hover:border-cyan-500/50',
-                    'hover:text-violet-400 hover:border-violet-500/50',
-                    'hover:text-emerald-400 hover:border-emerald-500/50',
-                  ];
-                  return (
-                    <span key={tech} className={`px-3 py-1 rounded-full text-xs font-medium bg-gray-900 border border-gray-800 text-gray-400 transition-all duration-200 ${colours[i % 4]}`}>
-                      {tech}
-                    </span>
-                  );
-                })}
-              </div>
+            <div className="flex flex-wrap gap-2 pt-1">
+              {techStack.map((tech, i) => {
+                const colours = ['rgba(16,185,129,0.15)', 'rgba(20,184,166,0.15)', 'rgba(245,158,11,0.12)', 'rgba(139,92,246,0.12)'];
+                const text    = ['#34d399','#2dd4bf','#fbbf24','#a78bfa'];
+                return (
+                  <motion.span key={tech} whileHover={{ scale:1.08 }} className="px-3 py-1 rounded-full text-xs font-medium border transition-all cursor-default" style={{ background: colours[i%4], color: text[i%4], borderColor: colours[i%4].replace('0.15','0.35').replace('0.12','0.3') }}>
+                    {tech}
+                  </motion.span>
+                );
+              })}
             </div>
           </motion.div>
         </div>

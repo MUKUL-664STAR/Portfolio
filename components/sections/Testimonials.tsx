@@ -43,7 +43,7 @@ export default function TestimonialsSection() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section id="testimonials" className="py-24 bg-gray-950 relative overflow-hidden">
+    <section id="testimonials" className="py-24 relative overflow-hidden" style={{ background:'#080e14' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           title="Testimonials"
@@ -58,10 +58,11 @@ export default function TestimonialsSection() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: idx * 0.12 }}
               whileHover={{ y: -4 }}
-              className="relative p-6 rounded-2xl bg-gray-900 border border-gray-800 hover:border-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300"
+              className="relative p-6 rounded-2xl border transition-all duration-300"
+              style={{ background:'#0d1520', borderColor:'rgba(255,255,255,0.07)' }}
             >
               {/* Quote icon */}
-              <Quote className="absolute top-5 right-5 w-8 h-8 text-blue-500/10" />
+              <Quote className="absolute top-5 right-5 w-8 h-8" style={{ color:'rgba(16,185,129,0.1)' }} />
 
               {/* Stars */}
               <div className="flex items-center gap-0.5 mb-4">
@@ -77,12 +78,12 @@ export default function TestimonialsSection() {
 
               {/* Author */}
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white text-sm font-bold shrink-0">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0" style={{ background:'linear-gradient(135deg,#059669,#0d9488)' }}>
                   {t.avatar}
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-white">{t.name}</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">
+                  <div className="text-xs text-gray-500">
                     {t.role} · {t.company}
                   </div>
                 </div>
@@ -98,10 +99,10 @@ export default function TestimonialsSection() {
           transition={{ delay: 0.5, duration: 0.6 }}
           className="mt-16"
         >
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+          <h3 className="text-xl font-bold text-white mb-4 text-center">
             GitHub Contributions
           </h3>
-          <div className="rounded-2xl bg-gray-900 border border-gray-800 p-6 flex flex-col items-center justify-center min-h-[120px] gap-3">
+          <div className="rounded-2xl p-6 flex flex-col items-center justify-center min-h-[120px] gap-3 border" style={{ background:'#0d1520', borderColor:'rgba(255,255,255,0.07)' }}>
             <ContributionGraph />
             <p className="text-xs text-gray-500 dark:text-gray-400">
               GitHub contribution graph placeholder — connect your GitHub for live data

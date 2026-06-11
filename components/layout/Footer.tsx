@@ -1,42 +1,42 @@
 'use client';
 
-import { Code2, Heart, Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart } from 'lucide-react';
 import { profile } from '@/data/profile';
 import { NAV_LINKS } from '@/constants';
 import { scrollToSection } from '@/utils';
 
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="border-t border-gray-800 bg-gray-950">
+    <footer className="border-t" style={{ background:'#080e14', borderColor:'rgba(255,255,255,0.07)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow-lg shadow-blue-500/30">
-                <Code2 className="w-5 h-5" />
-              </span>
-              <span className="font-bold text-xl text-gray-900 dark:text-white">
-                Mukul<span className="text-blue-500">.</span>
-              </span>
+            <div className="font-black text-2xl text-white mb-3">
+              Mukul<span style={{ color:'#34d399' }}>.</span>
             </div>
-            <p className="text-sm text-gray-500 max-w-xs">
-              Backend Developer passionate about building scalable, production-grade systems.
+            <p className="text-sm text-gray-500 max-w-xs leading-relaxed">
+              Backend Engineer based in Noida, India. Building reliable systems that scale.
             </p>
+            <div className="flex gap-2 mt-4">
+              {[{ href:profile.github, icon:Github, label:'GitHub' },{ href:profile.linkedin, icon:Linkedin, label:'LinkedIn' },{ href:`mailto:${profile.email}`, icon:Mail, label:'Email' }].map(({ href, icon:Icon, label }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200" style={{ color:'#6b7280', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)' }}>
+                  <Icon className="w-4 h-4" />
+                </a>
+              ))}
+            </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Nav */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-3">
-              Quick Links
-            </h3>
+            <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Navigation</h3>
             <ul className="space-y-2">
-              {NAV_LINKS.slice(0, 5).map((link) => (
-                <li key={link.href}>
-                  <button
-                    onClick={() => scrollToSection(link.href)}
-                    className="text-sm text-gray-500 hover:text-indigo-400 transition-colors"
-                  >
+              {NAV_LINKS.map(link => (
+                <li key={link.label}>
+                  <button onClick={() => scrollToSection(link.href)} className="text-sm text-gray-500 hover:text-emerald-400 transition-colors">
                     {link.label}
                   </button>
                 </li>
@@ -46,46 +46,19 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-3">
-              Connect
-            </h3>
-            <div className="flex items-center gap-4">
-              <a
-                href={profile.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-all"
-                aria-label="GitHub"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href={`mailto:${profile.email}`}
-                className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all"
-                aria-label="Email"
-              >
-                <Mail className="w-5 h-5" />
-              </a>
-            </div>
-            <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">{profile.email}</p>
+            <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Contact</h3>
+            <ul className="space-y-2">
+              <li><a href={`mailto:${profile.email}`} className="text-sm text-gray-500 hover:text-emerald-400 transition-colors">{profile.email}</a></li>
+              <li><a href={`tel:${profile.phone}`} className="text-sm text-gray-500 hover:text-teal-400 transition-colors">{profile.phone}</a></li>
+              <li><span className="text-sm text-gray-600">{profile.location}</span></li>
+            </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-200 dark:border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            © {new Date().getFullYear()} Mukul Choudhary. All rights reserved.
-          </p>
-          <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1">
-            Built with <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" /> using Next.js & Tailwind CSS
+        <div className="mt-10 pt-6 border-t flex flex-col sm:flex-row items-center justify-between gap-3" style={{ borderColor:'rgba(255,255,255,0.06)' }}>
+          <p className="text-xs text-gray-600">&copy; {year} Mukul Choudhary. All rights reserved.</p>
+          <p className="text-xs text-gray-600 flex items-center gap-1">
+            Built with <Heart className="w-3 h-3 text-emerald-500 fill-current" /> using Next.js & Tailwind CSS
           </p>
         </div>
       </div>
