@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Server, Database, Cloud, Wrench } from 'lucide-react';
 import SectionTitle from '@/components/ui/SectionTitle';
+import TechIcon, { getTechIcon } from '@/components/ui/TechIcon';
 import { skillCategories } from '@/data/skills';
 import React from 'react';
 
@@ -51,10 +52,17 @@ export default function SkillsSection() {
                 <h3 className="font-bold text-white text-sm mb-3">{cat.category}</h3>
 
                 <div className="space-y-2.5">
-                  {cat.skills.map((sk) => (
+                  {cat.skills.map((sk) => {
+                    const hasIcon = !!getTechIcon(sk.name);
+                    return (
                     <div key={sk.name}>
-                      <div className="flex justify-between mb-1">
-                        <span className="text-xs text-gray-500 dark:text-gray-400">{sk.name}</span>
+                      <div className="flex justify-between items-center mb-1">
+                        <span className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1.5">
+                          {hasIcon
+                            ? <TechIcon name={sk.name} size={13} />
+                            : <span className="w-3.5 h-3.5 rounded-sm inline-block" style={{ background: cfg.bg }} />}
+                          {sk.name}
+                        </span>
                         <span className="text-xs font-medium px-1.5 py-0.5 rounded-full" style={{ background: cfg.bg, color: cfg.accent }}>
                           {sk.level === 4 ? 'Expert' : sk.level === 3 ? 'Advanced' : 'Intermediate'}
                         </span>
@@ -69,7 +77,8 @@ export default function SkillsSection() {
                         />
                       </div>
                     </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </motion.div>
             );

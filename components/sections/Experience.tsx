@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Briefcase, Building2, BadgeCheck, Calendar } from 'lucide-react';
 import SectionTitle from '@/components/ui/SectionTitle';
+import TechIcon, { getTechIcon } from '@/components/ui/TechIcon';
 import { experiences } from '@/data/experience';
 
 const accentColors = ['#34d399','#2dd4bf','#fbbf24','#a78bfa'];
@@ -74,9 +75,15 @@ export default function ExperienceSection() {
                   </ul>
 
                   <div className="flex flex-wrap gap-1.5">
-                    {exp.technologies.slice(0,6).map((tech) => (
-                      <span key={tech} className="text-xs px-2 py-0.5 rounded-full border" style={{ background:'rgba(255,255,255,0.04)', borderColor:'rgba(255,255,255,0.1)', color:'#9ca3af' }}>{tech}</span>
-                    ))}
+                    {exp.technologies.slice(0,6).map((tech) => {
+                      const hasIcon = !!getTechIcon(tech);
+                      return (
+                        <span key={tech} className="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-full border" style={{ background:'var(--bg-surface)', borderColor:'var(--border-card)', color:'var(--color-3)' }}>
+                          {hasIcon && <TechIcon name={tech} size={11} />}
+                          {tech}
+                        </span>
+                      );
+                    })}
                   </div>
                 </motion.div>
               </motion.div>

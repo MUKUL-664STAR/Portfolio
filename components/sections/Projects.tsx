@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Github, ExternalLink } from 'lucide-react';
 import SectionTitle from '@/components/ui/SectionTitle';
+import TechIcon, { getTechIcon } from '@/components/ui/TechIcon';
 import { projects } from '@/data/projects';
 
 const cardCfg = [
@@ -64,11 +65,15 @@ export default function ProjectsSection() {
 
                 {/* Tech badges */}
                 <div className="px-5 pb-4 flex flex-wrap gap-1.5 flex-1">
-                  {proj.techStack.map((tech: string) => (
-                    <span key={tech} className="text-xs px-2 py-0.5 rounded-full" style={{ background: cfg.badgeBg, color: cfg.badgeText }}>
-                      {tech}
-                    </span>
-                  ))}
+                  {proj.techStack.map((tech: string) => {
+                    const hasIcon = !!getTechIcon(tech);
+                    return (
+                      <span key={tech} className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full font-medium" style={{ background: cfg.badgeBg, color: cfg.badgeText }}>
+                        {hasIcon && <TechIcon name={tech} size={11} />}
+                        {tech}
+                      </span>
+                    );
+                  })}
                 </div>
 
                 {/* Footer */}
